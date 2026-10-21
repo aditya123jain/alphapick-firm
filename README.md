@@ -1,6 +1,6 @@
 # Alphapick: firm website (alphapick.in)
 
-Static company website for Alphapick, a proprietary trading firm that trades US equities with its own capital.
+Static company website for Alphapick, a proprietary trading firm that trades financial markets with its own capital.
 It is a separate project from `alphapick-next` (the old advisory concept). Nothing was reused from that project.
 
 ## Stack
@@ -69,7 +69,7 @@ These follow Render's current custom-domain docs (render.com/docs/configure-othe
 
 ## Content rules (keep these when editing)
 
-- Alphapick is a proprietary trading firm that trades US equities with its own capital. It is not an advisory firm.
+- Alphapick is a proprietary trading firm that trades financial markets with its own capital. It is not an advisory firm.
 - No investment advice, picks, client solicitation or promises about returns. Don't use the word "fund" for the firm.
 - No physical address, and no city name.
 - No made-up stats, team, headcount, AUM, founding year, performance figures, testimonials or logos.

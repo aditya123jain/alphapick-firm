@@ -3,7 +3,7 @@ import { PageHero, R, CTA } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "What we do",
-  description: "Alphapick trades US stocks and ETFs with its own capital, through a clear research, risk and review process.",
+  description: "Alphapick trades financial markets with its own capital, through a clear research, risk and review process.",
   alternates: { canonical: "/what-we-do/" },
 };
 
@@ -17,13 +17,13 @@ const CYCLE = [
 export default function WhatWeDo() {
   return (
     <>
-      <PageHero eyebrow="What we do" title={<>We trade US equities. <em className="text-gold">That is the job.</em></>}
-        lead="Alphapick trades US stocks and ETFs with the firm's own capital. Traders run clear, rule-based approaches, across intraday and swing horizons, backed by data, tools and close support." />
+      <PageHero eyebrow="What we do" title={<>We trade the markets. <em className="text-gold">That is the job.</em></>}
+        lead="Alphapick trades financial markets with the firm's own capital. Traders run clear, rule-based approaches, across intraday and swing horizons, backed by data, tools and close support." />
 
       <section className="wrap py-24 md:py-32" aria-label="Areas">
         <div className="grid gap-6 md:grid-cols-2">
           {[
-            { e: "Markets", t: "US stocks & ETFs", b: "Our focus is US-listed stocks and ETFs, traded during the US regular session." },
+            { e: "Markets", t: "Liquid, listed markets", b: "We trade liquid, exchange-listed instruments, during the hours those markets are open." },
             { e: "Approach", t: "Rule-based, trader-led", b: "Intraday, swing, or something of the trader's own. What matters is that the approach is clear, disciplined, and repeatable." },
             { e: "Capital", t: "Proprietary only", b: "Every position uses the firm's own capital. Allocation to a trader grows as they deliver consistent results." },
             { e: "Risk", t: "Within agreed limits", b: "Limits are set and agreed in advance. Risk is managed thoughtfully, every session, by every trader." },
@@ -80,7 +80,7 @@ export default function WhatWeDo() {
         </div>
       </section>
 
-      <CTA title={<>Bring your approach <em className="text-gold">to the desk.</em></>} body="We are hiring a US Equity Trader." href="/careers/us-equity-trader/" label="View the role" />
+      <CTA title={<>Bring your approach <em className="text-gold">to the desk.</em></>} body="We are hiring traders. See the open roles." href="/careers/us-equity-trader/" label="View the role" />
     </>
   );
 }

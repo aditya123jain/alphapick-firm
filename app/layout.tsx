@@ -12,17 +12,17 @@ const sans = Inter({ subsets: ["latin"], variable: "--font-inter", display: "swa
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE.url),
-  title: { default: "Alphapick | Proprietary trading in US equities", template: "%s | Alphapick" },
+  title: { default: "Alphapick | Proprietary trading firm", template: "%s | Alphapick" },
   description: SITE.description,
   applicationName: "Alphapick",
   openGraph: {
     type: "website", url: SITE.url, siteName: "Alphapick",
-    title: "Alphapick | Proprietary trading in US equities",
+    title: "Alphapick | Proprietary trading firm",
     description: SITE.description,
-    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Alphapick, proprietary trading in US equities" }],
+    images: [{ url: "/og.png", width: 1200, height: 630, alt: "Alphapick, proprietary trading firm" }],
     locale: "en_US",
   },
-  twitter: { card: "summary_large_image", title: "Alphapick | Proprietary trading in US equities", description: SITE.description, images: ["/og.png"] },
+  twitter: { card: "summary_large_image", title: "Alphapick | Proprietary trading firm", description: SITE.description, images: ["/og.png"] },
   icons: {
     icon: [{ url: "/favicon.svg", type: "image/svg+xml" }, { url: "/favicon-32.png", sizes: "32x32", type: "image/png" }, { url: "/favicon.ico", sizes: "any" }],
     apple: [{ url: "/apple-touch-icon.png", sizes: "180x180" }],

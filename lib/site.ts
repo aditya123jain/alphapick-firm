@@ -2,7 +2,7 @@ export const SITE = {
   name: "Alphapick",
   url: "https://alphapick.in",
   description:
-    "Alphapick is a proprietary trading firm that trades US equities with its own capital.",
+    "Alphapick is a proprietary trading firm that trades financial markets with its own capital.",
   emailGeneral: "info@alphapick.in",
   emailCareers: "careers@alphapick.in",
 };

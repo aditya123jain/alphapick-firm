@@ -23,7 +23,7 @@ export default function Home() {
           <HeroCanvas />
         </div>
         <div className="wrap flex min-h-[100svh] flex-col justify-end pt-32 pb-14 md:pb-20">
-          <p className="eyebrow rise">Proprietary trading · US equities</p>
+          <p className="eyebrow rise">Proprietary trading · Financial markets</p>
           <h1 id="hero-h" className="rise mt-7 max-w-5xl text-[3.1rem] leading-[0.98] sm:text-7xl md:text-8xl lg:text-[7.4rem]" style={{ ["--d" as string]: "90ms" }}>
             Our own capital.<br />
             <em className="font-normal text-gold">Traded with discipline.</em>
@@ -31,7 +31,7 @@ export default function Home() {
           <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-12 md:items-end">
             <div className="md:col-span-6">
               <p className="rise max-w-xl text-lg text-mute md:text-xl" style={{ ["--d" as string]: "180ms" }}>
-                Alphapick is a proprietary trading firm. We trade US stocks and ETFs with the firm&apos;s own capital, working the full US session every evening.
+                Alphapick is a proprietary trading firm. We trade financial markets with the firm&apos;s own capital, with discipline and a clear process.
               </p>
               <div className="rise mt-9 flex flex-wrap gap-3" style={{ ["--d" as string]: "260ms" }}>
                 <Link href="/careers/" className="btn btn-gold">Careers <Arrow /></Link>
@@ -64,7 +64,7 @@ export default function Home() {
         <div className="mt-20 grid gap-px overflow-hidden rounded-2xl border border-line bg-line md:grid-cols-3">
           {[
             { t: "Proprietary capital", b: "Every position is taken with the firm's own capital. We do not manage money for anyone else." },
-            { t: "US equities", b: "We trade US stocks and ETFs, across intraday and swing horizons." },
+            { t: "Financial markets", b: "We trade liquid, listed markets, across intraday and swing horizons." },
             { t: "Trader-led", b: "Traders run their own rule-based approaches, backed with capital, data, and tools." },
           ].map((c, i) => (
             <R key={c.t} d={i * 90} className="bg-ink p-8 md:p-10">
@@ -141,7 +141,7 @@ export default function Home() {
         </div>
       </section>
 
-      <CTA title={<>Trade US equities <em className="text-gold">with us.</em></>}
+      <CTA title={<>Trade the markets <em className="text-gold">with us.</em></>}
         body="We are hiring a US Equity Trader to trade the firm's capital using their own approach, on-site."
         href="/careers/us-equity-trader/" label="View the role" />
     </>
