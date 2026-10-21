@@ -18,8 +18,6 @@ export default function Footer() {
             {NAV.map((n) => (
               <li key={n.href}><Link href={n.href} className="link-u text-mute hover:text-ivory">{n.label}</Link></li>
             ))}
-            <li><Link href="/careers/us-equity-trader/" className="link-u text-mute hover:text-ivory">US Equity Trader</Link></li>
-            <li><Link href="/careers/fno-trader/" className="link-u text-mute hover:text-ivory">F&amp;O Trader</Link></li>
           </ul>
         </nav>
         <div className="md:col-span-4">
