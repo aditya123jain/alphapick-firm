@@ -3,7 +3,7 @@ import { PageHero, R, CTA } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Alphapick is a proprietary trading firm that trades financial markets with its own capital.",
+  description: "Alphapick is a proprietary trading & investing firm that trades and invests in financial markets with its own capital.",
   alternates: { canonical: "/about/" },
 };
 
@@ -19,8 +19,8 @@ const VALUES = [
 export default function About() {
   return (
     <>
-      <PageHero eyebrow="About Alphapick" title={<>A trading firm, <em className="text-gold">in the plainest sense.</em></>}
-        lead="Alphapick is a proprietary trading firm. We trade financial markets with the firm's own capital, and that is the whole of our business." />
+      <PageHero eyebrow="About Alphapick" title={<>A <span className="text-gold">trading</span> &amp; investing firm, <em className="text-gold">in the plainest sense.</em></>}
+        lead={<>Alphapick is a proprietary <span className="font-medium text-gold">trading</span> &amp; investing firm. We trade and invest in financial markets with the firm&apos;s own capital, and that is the whole of our business.</>} />
 
       <section className="wrap py-24 md:py-32" aria-labelledby="who-h">
         <div className="grid gap-12 md:grid-cols-12">

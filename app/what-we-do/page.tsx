@@ -3,7 +3,7 @@ import { PageHero, R, CTA } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "What we do",
-  description: "Alphapick trades financial markets with its own capital, through a clear research, risk and review process.",
+  description: "Alphapick trades and invests in financial markets with its own capital, through a clear research, risk and review process.",
   alternates: { canonical: "/what-we-do/" },
 };
 
@@ -18,7 +18,7 @@ export default function WhatWeDo() {
   return (
     <>
       <PageHero eyebrow="What we do" title={<>We trade the markets. <em className="text-gold">That is the job.</em></>}
-        lead="Alphapick trades financial markets with the firm's own capital. Traders run clear, rule-based approaches, across intraday and swing horizons, backed by data, tools and close support." />
+        lead={<>Alphapick is a proprietary <span className="font-medium text-gold">trading</span> &amp; investing firm, active in financial markets with the firm&apos;s own capital. Traders run clear, rule-based approaches, across intraday and swing horizons, backed by data, tools and close support.</>} />
 
       <section className="wrap py-24 md:py-32" aria-label="Areas">
         <div className="grid gap-6 md:grid-cols-2">
