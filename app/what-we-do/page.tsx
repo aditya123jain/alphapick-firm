@@ -67,7 +67,7 @@ export default function WhatWeDo() {
               {[
                 ["Data & tools", "Data, tools, and platform costs are fully covered by the firm."],
                 ["Workspace", "A dedicated trading setup for each trader at the office, on-site."],
-                ["Hours", "9:00 AM to 4:30 PM ET, covering US market hours."],
+                ["Hours", "6:30 PM to 2:00 AM IST, covering US market hours."],
                 ["Collaboration", "Ideas and results are discussed openly with the firm's leadership."],
               ].map(([k, v]) => (
                 <div key={k} className="grid gap-2 py-6 sm:grid-cols-3">

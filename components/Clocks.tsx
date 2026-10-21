@@ -12,6 +12,7 @@ export default function Clocks() {
     return () => clearInterval(id);
   }, []);
   const rows = [
+    { city: "Our desk", tz: "Asia/Kolkata", label: "IST" },
     { city: "New York", tz: "America/New_York", label: "ET" },
   ];
   return (
@@ -25,10 +26,6 @@ export default function Clocks() {
           </dd>
         </div>
       ))}
-      <div className="px-5">
-        <dt className="text-[.65rem] font-semibold uppercase tracking-[.24em] text-faint">US regular session</dt>
-        <dd className="mt-3 font-display text-2xl tabular-nums text-ivory">9:30 – 16:00 <span className="ml-1 align-middle font-sans text-xs tracking-[.2em] text-gold">ET</span></dd>
-      </div>
     </dl>
   );
 }

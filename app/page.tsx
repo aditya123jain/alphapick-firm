@@ -31,7 +31,7 @@ export default function Home() {
           <div className="mt-10 grid gap-10 md:mt-14 md:grid-cols-12 md:items-end">
             <div className="md:col-span-6">
               <p className="rise max-w-xl text-lg text-mute md:text-xl" style={{ ["--d" as string]: "180ms" }}>
-                Alphapick is a proprietary trading firm. We trade US stocks and ETFs with the firm&apos;s own capital, working the full US session every day.
+                Alphapick is a proprietary trading firm. We trade US stocks and ETFs with the firm&apos;s own capital, working the full US session every evening.
               </p>
               <div className="rise mt-9 flex flex-wrap gap-3" style={{ ["--d" as string]: "260ms" }}>
                 <Link href="/careers/" className="btn btn-gold">Careers <Arrow /></Link>
@@ -105,11 +105,11 @@ export default function Home() {
         <div className="grid gap-14 md:grid-cols-12 md:items-center">
           <R className="md:col-span-5">
             <p className="eyebrow">When we trade</p>
-            <h2 id="ses-h" className="mt-6 text-5xl md:text-6xl">When New York opens, <em className="text-gold">the desk is live.</em></h2>
-            <p className="mt-6 max-w-md text-mute md:text-lg">The desk works on-site from 9:00 AM to 4:30 PM ET, covering the full US regular session from the open to the close.</p>
+            <h2 id="ses-h" className="mt-6 text-5xl md:text-6xl">While our evening runs, <em className="text-gold">New York is open.</em></h2>
+            <p className="mt-6 max-w-md text-mute md:text-lg">The desk works on-site from 6:30 PM to 2:00 AM IST, covering the full US regular session from the open to the close.</p>
           </R>
           <R d={120} className="md:col-span-7">
-            <svg viewBox="0 0 600 340" className="w-full" role="img" aria-label="A 24-hour dial showing the desk's shift in New York time covering US market hours">
+            <svg viewBox="0 0 600 340" className="w-full" role="img" aria-label="A 24-hour dial showing the desk's evening shift in IST overlapping US market hours">
               <defs>
                 <linearGradient id="arc" x1="0" x2="1"><stop offset="0" stopColor="#d4a251" stopOpacity=".5" /><stop offset="1" stopColor="#e6c48a" /></linearGradient>
               </defs>
@@ -119,7 +119,7 @@ export default function Home() {
                   return <line key={i} x1={Math.cos(a) * r1} y1={Math.sin(a) * r1} x2={Math.cos(a) * r2} y2={Math.sin(a) * r2} stroke="#3a3f47" strokeWidth={i % 6 === 0 ? 2 : 1} />;
                 })}
                 <path d="M-200 0A200 200 0 0 1 200 0" fill="none" stroke="#2e333a" strokeWidth="18" strokeLinecap="round" />
-                {/* 2:30 AM ET (left) to 6:30 PM ET (right): 16h over 180deg. Shift 9:00-16:30 ET => 6.5h..14h */}
+                {/* 12 PM IST (left) to 4 AM IST (right): 16h over 180deg. Shift 18:30-02:00 => 6.5h..14h */}
                 {(() => {
                   const ang = (h: number) => Math.PI + (h / 16) * Math.PI;
                   const p = (h: number, r: number) => `${(Math.cos(ang(h)) * r).toFixed(1)} ${(Math.sin(ang(h)) * r).toFixed(1)}`;
@@ -127,11 +127,11 @@ export default function Home() {
                     <>
                       <path d={`M${p(6.5, 200)}A200 200 0 0 1 ${p(14, 200)}`} fill="none" stroke="url(#arc)" strokeWidth="18" strokeLinecap="round" />
                       <path d={`M${p(7, 168)}A168 168 0 0 1 ${p(13.5, 168)}`} fill="none" stroke="#d4a251" strokeOpacity=".55" strokeWidth="2" strokeDasharray="2 6" />
-                      <text x="0" y="-70" textAnchor="middle" fill="#f4efe6" fontFamily="var(--font-serif), Georgia, serif" fontSize="44">9:00 AM – 4:30 PM</text>
-                      <text x="0" y="-36" textAnchor="middle" fill="#b4ada1" fontFamily="var(--font-inter), sans-serif" fontSize="13" letterSpacing="3">DESK SHIFT · NEW YORK TIME</text>
+                      <text x="0" y="-70" textAnchor="middle" fill="#f4efe6" fontFamily="var(--font-serif), Georgia, serif" fontSize="44">6:30 PM – 2:00 AM</text>
+                      <text x="0" y="-36" textAnchor="middle" fill="#b4ada1" fontFamily="var(--font-inter), sans-serif" fontSize="13" letterSpacing="3">DESK SHIFT · IST</text>
                       <text x="0" y="-8" textAnchor="middle" fill="#d4a251" fontFamily="var(--font-inter), sans-serif" fontSize="12" letterSpacing="2">US SESSION 9:30 AM – 4:00 PM ET</text>
-                      <text x="-262" y="24" fill="#8f897f" fontSize="12" fontFamily="var(--font-inter), sans-serif">2:30 AM</text>
-                      <text x="212" y="24" fill="#8f897f" fontSize="12" fontFamily="var(--font-inter), sans-serif">6:30 PM</text>
+                      <text x="-252" y="24" fill="#8f897f" fontSize="12" fontFamily="var(--font-inter), sans-serif">12 PM</text>
+                      <text x="218" y="24" fill="#8f897f" fontSize="12" fontFamily="var(--font-inter), sans-serif">4 AM</text>
                     </>
                   );
                 })()}

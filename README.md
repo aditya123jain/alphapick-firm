@@ -13,7 +13,7 @@ Next was chosen over hand-written HTML for three reasons:
 - `next/font`, which downloads Cormorant Garamond and Inter at build time and self-hosts them (no Google requests at runtime)
 - per-page metadata and Open Graph tags
 
-Client JS is limited to the hero canvas, the scroll reveal (IntersectionObserver), the New York clock and the mobile menu. Framer Motion and other animation libraries are not used.
+Client JS is limited to the hero canvas, the scroll reveal (IntersectionObserver), the IST/New York clocks and the mobile menu. Framer Motion and other animation libraries are not used.
 
 | Route | File |
 | --- | --- |
