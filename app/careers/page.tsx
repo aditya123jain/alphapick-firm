@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { PageHero, R, Arrow } from "@/components/ui";
-import { ROLE, SITE } from "@/lib/site";
+import { ROLE, ROLES, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Careers",
-  description: "Careers at Alphapick. We are hiring a US Equity Trader, full-time and on-site, 6:30 PM to 2:00 AM IST.",
+  description: "Careers at Alphapick. We are hiring a US Equity Trader (6:30 PM to 2:00 AM IST) and an F&O Trader (9:00 AM to 4:00 PM IST), both full-time and on-site.",
   alternates: { canonical: "/careers/" },
 };
 
@@ -35,24 +35,28 @@ export default function Careers() {
       <section className="border-y border-line/60 bg-char/40 py-24 md:py-32" aria-labelledby="open-h">
         <div className="wrap">
           <R className="flex flex-wrap items-end justify-between gap-6">
-            <div><p className="eyebrow">Open roles</p><h2 id="open-h" className="mt-6 text-5xl md:text-6xl">One seat, <em className="text-gold">open now.</em></h2></div>
-            <p className="text-sm text-faint">1 open position</p>
+            <div><p className="eyebrow">Open roles</p><h2 id="open-h" className="mt-6 text-5xl md:text-6xl">Two seats, <em className="text-gold">open now.</em></h2></div>
+            <p className="text-sm text-faint">{ROLES.length} open positions</p>
           </R>
-          <R d={100}>
-            <Link href="/careers/us-equity-trader/" className="group mt-14 block border-y border-line py-10 transition-colors hover:border-gold/60 md:py-14">
-              <div className="grid gap-6 md:grid-cols-12 md:items-center">
-                <h3 className="text-4xl transition-colors group-hover:text-gold-soft md:col-span-5 md:text-6xl">{ROLE.title}</h3>
-                <div className="flex flex-wrap gap-2 md:col-span-5">
-                  {["Full-time", "On-site", "6:30 PM – 2:00 AM IST", "US equities"].map((t) => (
-                    <span key={t} className="rounded-full border border-line px-4 py-1.5 text-xs tracking-wide text-mute">{t}</span>
-                  ))}
-                </div>
-                <span className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[.18em] text-gold md:col-span-2 md:justify-end">
-                  Read role <Arrow className="transition-transform group-hover:translate-x-1" />
-                </span>
-              </div>
-            </Link>
-          </R>
+          <div className="mt-14 border-t border-line">
+            {ROLES.map((r, i) => (
+              <R key={r.slug} d={100 + i * 80}>
+                <Link href={`/careers/${r.slug}/`} className="group block border-b border-line py-10 transition-colors hover:border-gold/60 md:py-14">
+                  <div className="grid gap-6 md:grid-cols-12 md:items-center">
+                    <h3 className="text-4xl transition-colors group-hover:text-gold-soft md:col-span-5 md:text-6xl">{r.title}</h3>
+                    <div className="flex flex-wrap gap-2 md:col-span-5">
+                      {["Full-time", "On-site", r.chipHours, r.chipMarket].map((t) => (
+                        <span key={t} className="rounded-full border border-line px-4 py-1.5 text-xs tracking-wide text-mute">{t}</span>
+                      ))}
+                    </div>
+                    <span className="inline-flex items-center gap-3 text-sm font-semibold uppercase tracking-[.18em] text-gold md:col-span-2 md:justify-end">
+                      Read role <Arrow className="transition-transform group-hover:translate-x-1" />
+                    </span>
+                  </div>
+                </Link>
+              </R>
+            ))}
+          </div>
         </div>
       </section>
 
@@ -60,7 +64,7 @@ export default function Careers() {
         <R className="mx-auto max-w-3xl text-center">
           <p className="eyebrow">How to apply</p>
           <h2 id="how-h" className="mt-6 text-4xl md:text-6xl">Send your resume and a short note on <em className="text-gold">how you trade.</em></h2>
-          <a href={`mailto:${SITE.emailCareers}?subject=${encodeURIComponent("Application: US Equity Trader")}`} className="btn btn-gold mt-12">{SITE.emailCareers} <Arrow /></a>
+          <a href={`mailto:${SITE.emailCareers}?subject=${encodeURIComponent("Application")}`} className="btn btn-gold mt-12">{SITE.emailCareers} <Arrow /></a>
         </R>
       </section>
     </>
