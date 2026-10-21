@@ -1,0 +1,13 @@
+import { chromium } from 'playwright';
+const b = await chromium.launch({ executablePath: '/usr/bin/google-chrome' });
+const p = await b.newPage({ viewport: { width: 390, height: 844 } });
+await p.goto('http://localhost:4010/');
+await p.keyboard.press('Tab');
+const skip = await p.evaluate(() => ({ text: document.activeElement.textContent, visible: document.activeElement.getBoundingClientRect().width > 1 }));
+await p.click('button[aria-controls="mobile-nav"]');
+const menu = await p.evaluate(() => ({ expanded: document.querySelector('button[aria-controls]').getAttribute('aria-expanded'), hidden: document.getElementById('mobile-nav').hidden }));
+await p.click('#mobile-nav >> text=Careers'); await p.waitForURL('**/careers/');
+const imgsNoAlt = await p.evaluate(() => [...document.images].filter(i => !i.hasAttribute('alt')).length);
+const landmarks = await p.evaluate(() => ({ header: !!document.querySelector('header'), main: !!document.querySelector('main#main'), footer: !!document.querySelector('footer'), h1: document.querySelectorAll('h1').length }));
+console.log(JSON.stringify({ skip, menu, navigatedTo: p.url(), imgsNoAlt, landmarks }));
+await b.close();
