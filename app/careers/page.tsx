@@ -5,7 +5,7 @@ import { ROLE, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Careers",
-  description: "Careers at Alphapick. We are hiring a US Equity Trader, full-time and on-site in India, 6:30 PM to 2:00 AM IST.",
+  description: "Careers at Alphapick. We are hiring a US Equity Trader, full-time and on-site, covering US market hours (9:00 AM to 4:30 PM ET).",
   alternates: { canonical: "/careers/" },
 };
 
@@ -43,7 +43,7 @@ export default function Careers() {
               <div className="grid gap-6 md:grid-cols-12 md:items-center">
                 <h3 className="text-4xl transition-colors group-hover:text-gold-soft md:col-span-5 md:text-6xl">{ROLE.title}</h3>
                 <div className="flex flex-wrap gap-2 md:col-span-5">
-                  {["Full-time", "On-site in India", "6:30 PM – 2:00 AM IST", "US equities"].map((t) => (
+                  {["Full-time", "On-site", "9:00 AM – 4:30 PM ET", "US equities"].map((t) => (
                     <span key={t} className="rounded-full border border-line px-4 py-1.5 text-xs tracking-wide text-mute">{t}</span>
                   ))}
                 </div>

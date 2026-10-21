@@ -3,7 +3,7 @@ import { PageHero, R, CTA } from "@/components/ui";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "Alphapick is a proprietary trading firm in India that trades US equities with its own capital.",
+  description: "Alphapick is a proprietary trading firm that trades US equities with its own capital.",
   alternates: { canonical: "/about/" },
 };
 
@@ -20,7 +20,7 @@ export default function About() {
   return (
     <>
       <PageHero eyebrow="About Alphapick" title={<>A trading firm, <em className="text-gold">in the plainest sense.</em></>}
-        lead="Alphapick is a proprietary trading firm in India. We trade US equities with the firm's own capital, and that is the whole of our business." />
+        lead="Alphapick is a proprietary trading firm. We trade US equities with the firm's own capital, and that is the whole of our business." />
 
       <section className="wrap py-24 md:py-32" aria-labelledby="who-h">
         <div className="grid gap-12 md:grid-cols-12">
@@ -28,7 +28,7 @@ export default function About() {
           <div className="space-y-8 text-lg text-mute md:col-span-7 md:text-xl">
             <R><h2 id="who-h" className="text-4xl text-ivory md:text-5xl">Small by design. Serious by habit.</h2></R>
             <R d={60}><p>We are a growing firm built around a simple idea: give capable traders capital, good tools, and close support, and hold everyone to a clear, rule-based process.</p></R>
-            <R d={120}><p>Our desk works the US session from India, in the evening hours. We trade US stocks and ETFs, and we care more about how a result was achieved than about any single good day.</p></R>
+            <R d={120}><p>Our desk works the full US session, from the open to the close. We trade US stocks and ETFs, and we care more about how a result was achieved than about any single good day.</p></R>
             <R d={180}><p>Because we only trade our own capital, there is no one to sell to and nothing to market. Our attention stays on the work.</p></R>
           </div>
         </div>

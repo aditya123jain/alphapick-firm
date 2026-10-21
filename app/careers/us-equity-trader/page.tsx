@@ -6,7 +6,7 @@ import { ROLE, SITE } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "US Equity Trader",
-  description: "US Equity Trader at Alphapick. Full-time, on-site in India, 6:30 PM to 2:00 AM IST, covering US market hours.",
+  description: "US Equity Trader at Alphapick. Full-time, on-site, 9:00 AM to 4:30 PM ET, covering US market hours.",
   alternates: { canonical: "/careers/us-equity-trader/" },
 };
 
@@ -53,7 +53,7 @@ export default function Role() {
         <aside className="lg:col-span-4" aria-label="Role summary">
           <div className="card p-7 lg:sticky lg:top-28">
             <dl className="space-y-5 text-sm">
-              {[["Role", ROLE.title], ["Type", "Full-time"], ["Location", "On-site in India"], ["Hours", "6:30 PM to 2:00 AM IST"], ["Markets", "US stocks and ETFs"]].map(([k, v]) => (
+              {[["Role", ROLE.title], ["Type", "Full-time"], ["Location", "On-site"], ["Hours", "9:00 AM to 4:30 PM ET"], ["Markets", "US stocks and ETFs"]].map(([k, v]) => (
                 <div key={k} className="flex justify-between gap-6 border-b border-line/70 pb-4 last:border-0 last:pb-0">
                   <dt className="text-faint">{k}</dt><dd className="text-right text-ivory">{v}</dd>
                 </div>

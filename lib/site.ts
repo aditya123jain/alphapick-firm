@@ -2,7 +2,7 @@ export const SITE = {
   name: "Alphapick",
   url: "https://alphapick.in",
   description:
-    "Alphapick is a proprietary trading firm in India that trades US equities with its own capital.",
+    "Alphapick is a proprietary trading firm that trades US equities with its own capital.",
   emailGeneral: "info@alphapick.in",
   emailCareers: "careers@alphapick.in",
 };
@@ -14,10 +14,10 @@ export const NAV = [
   { href: "/contact/", label: "Contact" },
 ];
 
-/* Approved job text (careers_us_equity_trader.md), with only the Jaipur and fund->firm edits. */
+/* Approved job text (careers_us_equity_trader.md), with location details removed and fund->firm edits. */
 export const ROLE = {
   title: "US Equity Trader",
-  meta: "Full-time, on-site in India, 6:30 PM to 2:00 AM IST (covering US market hours)",
+  meta: "Full-time, on-site, 9:00 AM to 4:30 PM ET (covering US market hours)",
   about:
     "We're a growing firm looking for a talented US equity trader to grow with us. If you've built an approach that works, or you love researching and refining new ideas, we'll back you with capital, tools, and a team that wants to see you succeed. We believe the best results come from working closely together, so you'll be a true partner in how the firm trades and grows.",
   do: [
@@ -31,7 +31,7 @@ export const ROLE = {
     "2+ years of live trading experience in US equities",
     "A clear, rule-based approach to trading, whether it's intraday, swing, or something of your own",
     "Discipline, patience, and a collaborative mindset",
-    "Comfortable working the evening shift on-site",
+    "Comfortable working the full US session on-site",
   ],
   offer: [
     "Competitive fixed pay plus a generous profit share on what you generate",

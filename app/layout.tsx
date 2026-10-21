@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     title: "Alphapick | Proprietary trading in US equities",
     description: SITE.description,
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Alphapick, proprietary trading in US equities" }],
-    locale: "en_IN",
+    locale: "en_US",
   },
   twitter: { card: "summary_large_image", title: "Alphapick | Proprietary trading in US equities", description: SITE.description, images: ["/og.png"] },
   icons: {
@@ -41,7 +41,7 @@ const orgLd = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en-IN" className={`${serif.variable} ${sans.variable}`}>
+    <html lang="en" className={`${serif.variable} ${sans.variable}`}>
       <body className="flex min-h-dvh flex-col">
         <a href="#main" className="sr-only z-[60] rounded-full bg-gold px-5 py-3 text-sm font-semibold text-ink focus:not-sr-only focus:fixed focus:top-4 focus:left-4">Skip to content</a>
         <Header />

@@ -9,7 +9,7 @@ export default function Footer() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img src="/brand/logo-horizontal-light.svg" alt="Alphapick" width={172} height={40} className="h-9 w-auto" />
           <p className="mt-6 max-w-sm text-sm text-mute">
-            A proprietary trading firm in India, trading US equities with its own capital.
+            A proprietary trading firm trading US equities with its own capital.
           </p>
         </div>
         <nav aria-label="Footer" className="md:col-span-3">

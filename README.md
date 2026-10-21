@@ -1,6 +1,6 @@
 # Alphapick: firm website (alphapick.in)
 
-Static company website for Alphapick, a proprietary trading firm in India that trades US equities with its own capital.
+Static company website for Alphapick, a proprietary trading firm that trades US equities with its own capital.
 It is a separate project from `alphapick-next` (the old advisory concept). Nothing was reused from that project.
 
 ## Stack
@@ -13,7 +13,7 @@ Next was chosen over hand-written HTML for three reasons:
 - `next/font`, which downloads Cormorant Garamond and Inter at build time and self-hosts them (no Google requests at runtime)
 - per-page metadata and Open Graph tags
 
-Client JS is limited to the hero canvas, the scroll reveal (IntersectionObserver), the IST/New York clocks and the mobile menu. Framer Motion and other animation libraries are not used.
+Client JS is limited to the hero canvas, the scroll reveal (IntersectionObserver), the New York clock and the mobile menu. Framer Motion and other animation libraries are not used.
 
 | Route | File |
 | --- | --- |
@@ -69,7 +69,7 @@ These follow Render's current custom-domain docs (render.com/docs/configure-othe
 
 ## Content rules (keep these when editing)
 
-- Alphapick is a proprietary trading firm in India that trades US equities with its own capital. It is not an advisory firm.
+- Alphapick is a proprietary trading firm that trades US equities with its own capital. It is not an advisory firm.
 - No investment advice, picks, client solicitation or promises about returns. Don't use the word "fund" for the firm.
 - No physical address, and no city name.
 - No made-up stats, team, headcount, AUM, founding year, performance figures, testimonials or logos.

@@ -23,7 +23,7 @@ export default function WhatWeDo() {
       <section className="wrap py-24 md:py-32" aria-label="Areas">
         <div className="grid gap-6 md:grid-cols-2">
           {[
-            { e: "Markets", t: "US stocks & ETFs", b: "Our focus is US-listed stocks and ETFs, traded during the US regular session from India." },
+            { e: "Markets", t: "US stocks & ETFs", b: "Our focus is US-listed stocks and ETFs, traded during the US regular session." },
             { e: "Approach", t: "Rule-based, trader-led", b: "Intraday, swing, or something of the trader's own. What matters is that the approach is clear, disciplined, and repeatable." },
             { e: "Capital", t: "Proprietary only", b: "Every position uses the firm's own capital. Allocation to a trader grows as they deliver consistent results." },
             { e: "Risk", t: "Within agreed limits", b: "Limits are set and agreed in advance. Risk is managed thoughtfully, every session, by every trader." },
@@ -66,8 +66,8 @@ export default function WhatWeDo() {
             <dl className="divide-y divide-line border-y border-line">
               {[
                 ["Data & tools", "Data, tools, and platform costs are fully covered by the firm."],
-                ["Workspace", "A dedicated trading setup for each trader at the office, on-site in India."],
-                ["Hours", "6:30 PM to 2:00 AM IST, covering US market hours."],
+                ["Workspace", "A dedicated trading setup for each trader at the office, on-site."],
+                ["Hours", "9:00 AM to 4:30 PM ET, covering US market hours."],
                 ["Collaboration", "Ideas and results are discussed openly with the firm's leadership."],
               ].map(([k, v]) => (
                 <div key={k} className="grid gap-2 py-6 sm:grid-cols-3">
