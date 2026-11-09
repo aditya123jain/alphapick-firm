@@ -48,8 +48,6 @@ export default function Knowledge() {
                   <div className="md:col-span-8">
                     <div className="flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-[.18em] text-faint">
                       <time dateTime={s.date}>{s.dateLabel}</time>
-                      <span aria-hidden className="text-line">·</span>
-                      <span>{s.author}</span>
                     </div>
                     <h3 className="mt-4 text-3xl transition-colors group-hover:text-gold-soft md:text-5xl">
                       {s.title}

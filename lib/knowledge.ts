@@ -3,7 +3,6 @@ export type Study = {
   title: string;
   date: string; // ISO
   dateLabel: string;
-  author: string;
   summary: string;
   metaDescription: string;
   tags: string[];
@@ -15,7 +14,6 @@ export const STUDIES: Study[] = [
     title: "Buying Three Lower Closes in US Equity ETFs",
     date: "2026-11-09",
     dateLabel: "Nov 9, 2026",
-    author: "@adi",
     summary:
       "Buying an ETF after three straight lower closes and selling when it closes above the prior day's high won about three trades in four on SPY and QQQ over 28 years.",
     metaDescription:

@@ -69,8 +69,6 @@ export default function ThreeLowerCloses() {
           </nav>
           <p className="rise mt-8 flex flex-wrap items-center gap-x-4 gap-y-2 text-xs uppercase tracking-[.18em] text-faint" style={{ ["--d" as string]: "40ms" }}>
             <time dateTime={study.date}>{study.dateLabel}</time>
-            <span aria-hidden>·</span>
-            <span>{study.author}</span>
           </p>
           <h1 className="rise mt-6 max-w-5xl text-[2.5rem] leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl" style={{ ["--d" as string]: "80ms" }}>
             Buying Three Lower Closes in <em className="text-gold">US Equity ETFs</em>
