@@ -39,6 +39,23 @@
   .link-u:hover, .link-u:focus-visible { background-size: 100% 1px; }
   .grain::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .05; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); }
   .card { background: linear-gradient(180deg, rgba(46,51,58,.55), rgba(38,42,48,.25)); border: 1px solid var(--color-line); border-radius: 1.25rem; }
+
+  .study-table-wrap { width: 100%; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--color-line); border-radius: 1rem; background: rgba(38,42,48,.35); }
+  .study-table { width: 100%; min-width: 40rem; border-collapse: collapse; font-size: .875rem; }
+  .study-table th, .study-table td { padding: .85rem 1rem; border-bottom: 1px solid var(--color-line); vertical-align: top; }
+  .study-table thead th { font-size: .65rem; letter-spacing: .16em; text-transform: uppercase; color: var(--color-gold); font-weight: 600; background: rgba(22,24,28,.85); white-space: nowrap; }
+  .study-table tbody th { font-weight: 500; color: var(--color-ivory); white-space: nowrap; }
+  .study-table tbody td { color: var(--color-mute); font-variant-numeric: tabular-nums; }
+  .study-table tbody tr:last-child th, .study-table tbody tr:last-child td { border-bottom: 0; }
+  .study-prose { max-width: 48rem; }
+  .study-prose p { color: var(--color-mute); font-size: 1.05rem; line-height: 1.75; }
+  .study-prose p + p { margin-top: 1.15rem; }
+  .study-prose ol.study-steps { counter-reset: step; list-style: none; margin-top: 1.5rem; }
+  .study-prose ol.study-steps > li { position: relative; padding-left: 3rem; padding-top: .85rem; padding-bottom: .85rem; border-top: 1px solid var(--color-line); color: var(--color-mute); line-height: 1.65; }
+  .study-prose ol.study-steps > li::before { counter-increment: step; content: counter(step); position: absolute; left: 0; top: .95rem; width: 1.75rem; height: 1.75rem; border-radius: 999px; border: 1px solid var(--color-gold); color: var(--color-gold); font-family: var(--font-display); font-size: .95rem; display: flex; align-items: center; justify-content: center; }
+  .study-prose h2 { margin-top: 3.5rem; margin-bottom: 1.25rem; font-size: clamp(1.9rem, 3vw, 2.6rem); color: var(--color-ivory); }
+  .study-prose h3 { margin-top: 2.5rem; margin-bottom: 1rem; font-size: clamp(1.4rem, 2.2vw, 1.85rem); color: var(--color-ivory); }
+  .study-prose .note { margin-top: 1rem; font-size: .92rem; color: var(--color-faint); }
 }
 
 /* Scroll reveal: content is visible by default; JS adds .reveal-ready to <html> only when motion is allowed. */

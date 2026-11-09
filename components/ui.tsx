@@ -1,7 +1,8 @@
 import type { ReactNode, CSSProperties } from "react";
 
-export function R({ children, d = 0, className = "", as: Tag = "div" }: { children: ReactNode; d?: number; className?: string; as?: "div" | "section" | "li" | "article" | "header" }) {
-  return <Tag data-reveal className={className} style={{ ["--d" as string]: `${d}ms` } as CSSProperties}>{children}</Tag>;
+type RevealTag = "div" | "section" | "li" | "article" | "header";
+export function R({ children, d = 0, className = "", as: Tag = "div", ...rest }: { children: ReactNode; d?: number; className?: string; as?: RevealTag } & Record<string, unknown>) {
+  return <Tag data-reveal className={className} style={{ ["--d" as string]: `${d}ms` } as CSSProperties} {...rest}>{children}</Tag>;
 }
 
 export function PageHero({ eyebrow, title, lead }: { eyebrow: string; title: ReactNode; lead?: ReactNode }) {
