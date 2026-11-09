@@ -73,7 +73,7 @@ export default function ThreeLowerCloses() {
             <span>{study.author}</span>
           </p>
           <h1 className="rise mt-6 max-w-5xl text-[2.5rem] leading-[1.05] sm:text-5xl md:text-6xl lg:text-7xl" style={{ ["--d" as string]: "80ms" }}>
-            Strategy 2: Buying Three Lower Closes in <em className="text-gold">US Equity ETFs</em>
+            Buying Three Lower Closes in <em className="text-gold">US Equity ETFs</em>
           </h1>
           <p className="rise mt-8 max-w-3xl text-lg text-mute md:text-xl" style={{ ["--d" as string]: "160ms" }}>
             Buying an ETF after three straight lower closes and selling when it closes above the prior day&apos;s high won 73% of trades on SPY and QQQ over 28 years, averaging +0.38% and +0.77% per trade after costs (t-stats 3.2 and 4.4). It trades only about 13 times a year, and its worst trades lost 16% to 19%. This is a backtest, not a track record, and it is not investment advice.
@@ -124,7 +124,7 @@ export default function ThreeLowerCloses() {
         <R d={80}>
           <Figure
             src="/knowledge/three-lower-closes/spy-qqq-equity.png"
-            alt="SPY and QQQ: growth of $1 on a log scale for Strategy 2 versus buy-and-hold, plus histograms of individual trade returns"
+            alt="SPY and QQQ: growth of $1 on a log scale for the rule versus buy-and-hold, plus histograms of individual trade returns"
             caption="Top: growth of $1 on a log scale, net of costs, against buy-and-hold (price only). Bottom: how individual trade returns are spread, with most small gains and a thin tail of large losses."
           />
         </R>
@@ -217,7 +217,7 @@ export default function ThreeLowerCloses() {
         <R>
           <Figure
             src="/knowledge/three-lower-closes/xle-xlk-equity.png"
-            alt="XLE and XLK: growth of $1 for Strategy 2 versus buy-and-hold, plus trade-return histograms"
+            alt="XLE and XLK: growth of $1 for the rule versus buy-and-hold, plus trade-return histograms"
             caption="The same two views for XLE (left) and XLK (right), through 5 Nov 2026."
           />
         </R>
@@ -423,7 +423,7 @@ export default function ThreeLowerCloses() {
             </ol>
           </R>
 
-          <R className="mt-16 flex flex-wrap items-center justify-between gap-6 border-t border-line pt-10">
+          <R className="print-hide mt-16 flex flex-wrap items-center justify-between gap-6 border-t border-line pt-10">
             <Link href="/knowledge/" className="link-u text-sm uppercase tracking-[.18em] text-mute hover:text-ivory">
               ← All knowledge
             </Link>

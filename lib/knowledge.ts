@@ -12,7 +12,7 @@ export type Study = {
 export const STUDIES: Study[] = [
   {
     slug: "three-lower-closes",
-    title: "Strategy 2: Buying Three Lower Closes in US Equity ETFs",
+    title: "Buying Three Lower Closes in US Equity ETFs",
     date: "2026-11-09",
     dateLabel: "Nov 9, 2026",
     author: "@adi",

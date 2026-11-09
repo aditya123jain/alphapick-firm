@@ -73,3 +73,10 @@
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; }
 }
+
+/* Print / PDF export: show everything immediately, drop interactive-only parts. */
+@media print {
+  .rise, .sweep { animation: none !important; opacity: 1 !important; transform: none !important; }
+  [data-reveal] { opacity: 1 !important; transform: none !important; transition: none !important; }
+  body > header, .print-hide, #discussion { display: none !important; }
+}
