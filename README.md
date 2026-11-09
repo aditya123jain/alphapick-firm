@@ -73,3 +73,49 @@ These follow Render's current custom-domain docs (render.com/docs/configure-othe
 - No investment advice, picks, client solicitation or promises about returns. Don't use the word "fund" for the firm.
 - No physical address, and no city name.
 - No made-up stats, team, headcount, AUM, founding year, performance figures, testimonials or logos.
+
+## Comments on Knowledge studies
+
+Each study page ends with a **Discussion** section (`components/Comments.tsx`). Readers can post a comment (name + text), reply one level deep, and like comments. The website stays a static export; comments come from a small separate API in **`comments-api/`** (Node + TypeScript, Hono, `pg`, zod).
+
+**Hosting (free):** the API runs as a Render **free** web service and stores data in a **Neon free** Postgres. A free Render instance sleeps after ~15 minutes idle, so the first request after a pause can take ~50 s. The frontend shows "Loading discussion…" then "Waking up the discussion server…", waits up to 90 s and retries GETs.
+
+**How it works**
+
+- Tables (created automatically on start): `comments` (id, study_slug, parent_id, name, body, created_at, hidden, ip_hash) and `likes` (comment_id, voter_hash; primary key on the pair, so likes are idempotent).
+- `GET /health` · `GET /v1/studies/:slug/comments` (visible comments, threaded, with like counts; optional `X-Voter` header marks the reader's own likes) · `POST /v1/studies/:slug/comments` `{name, body, parentId?, website}` · `POST /v1/comments/:id/like` `{voter, like?}` (`like` true/false sets, omitted toggles).
+- Admin, with `Authorization: Bearer $ADMIN_TOKEN`: `GET /v1/admin/comments[?slug=]`, `POST /v1/admin/comments/:id/hide`, `POST /v1/admin/comments/:id/unhide`.
+- Spam protection: hidden honeypot field (`website`), max 5 posts per IP per 10 minutes, duplicate-post check, at most 2 links per comment and none in names, HTML tags and control characters stripped, 1–60 character names and 1–2000 character comments, 16 KB body limit, likes limited to 60 per IP per 10 minutes. Raw IPs are never stored, only salted SHA-256 hashes. Comments are rendered as plain text.
+- Only slugs in `ALLOWED_SLUGS` accept comments. **When you add a study to `lib/knowledge.ts`, add its slug to `ALLOWED_SLUGS` on the API service** and render `<Comments slug={study.slug} />` at the end of its page.
+- Errors are JSON: `{"error":{"code":"…","message":"…"}}`.
+
+**Environment variables** (see `comments-api/.env.example`; never commit real values)
+
+| Where | Variable | Purpose |
+| --- | --- | --- |
+| API | `DATABASE_URL` | Postgres URL (Neon pooled URL with `?sslmode=require`) |
+| API | `ADMIN_TOKEN` | Long random secret for the moderation endpoints |
+| API | `IP_HASH_SALT` | Long random salt for hashing IPs and voter tokens |
+| API | `ALLOWED_ORIGINS` | `https://alphapick.in,https://www.alphapick.in` (localhost is always allowed) |
+| API | `ALLOWED_SLUGS` | Comma-separated study slugs (default `three-lower-closes`) |
+| Website build | `NEXT_PUBLIC_COMMENTS_API` | API base URL; defaults to `https://alphapick-comments.onrender.com` |
+
+**Render service settings:** runtime Node, plan Free, build `cd comments-api && npm ci --include=dev && npm run build`, start `cd comments-api && npm start`, health check `/health`. Like the static site, trigger a deploy manually after pushing if auto-deploy does not fire.
+
+**Local development**
+
+```bash
+cd comments-api
+cp .env.example .env   # point DATABASE_URL at any Postgres
+npm ci && npm test     # unit tests for validation and rate limiting
+npm run dev            # http://localhost:8787
+# in the repo root, point the site at it:
+NEXT_PUBLIC_COMMENTS_API=http://localhost:8787 npm run dev
+```
+
+**Moderation:** open `/knowledge/moderate/` (not linked anywhere, `noindex`), paste the admin token (kept only in that tab's sessionStorage), and use Hide / Unhide. Hidden comments (and replies under a hidden comment) disappear from the public page immediately. With curl:
+
+```bash
+curl -H "Authorization: Bearer $ADMIN_TOKEN" https://alphapick-comments.onrender.com/v1/admin/comments
+curl -X POST -H "Authorization: Bearer $ADMIN_TOKEN" https://alphapick-comments.onrender.com/v1/admin/comments/<id>/hide
+```

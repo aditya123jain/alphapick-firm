@@ -3,6 +3,7 @@ import Link from "next/link";
 import { R, Arrow } from "@/components/ui";
 import { Callout, Figure, StudyTable } from "@/components/StudyTable";
 import { getStudy } from "@/lib/knowledge";
+import Comments from "@/components/Comments";
 import {
   GLANCE, STABILITY, CONDITIONS, CATEGORIES,
   BROAD_US, STYLE, SECTORS, INDUSTRIES, INTL, EMERGING, BONDS, COMMODITIES, LEVERAGED,
@@ -431,6 +432,8 @@ export default function ThreeLowerCloses() {
             </a>
           </R>
         </div>
+
+        <Comments slug={study.slug} />
       </article>
     </>
   );

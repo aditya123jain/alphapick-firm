@@ -1,0 +1,27 @@
+{
+  "name": "alphapick-comments-api",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Comments API for the Knowledge studies on alphapick.in",
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "start": "node dist/server.js",
+    "dev": "tsc -p tsconfig.json && node --env-file=.env dist/server.js",
+    "test": "tsc -p tsconfig.json && node --test dist/*.test.js"
+  },
+  "engines": {
+    "node": ">=20.9"
+  },
+  "dependencies": {
+    "@hono/node-server": "^2.1.6",
+    "hono": "^4.13.17",
+    "pg": "^8.23.1",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@types/node": "^22.20.5",
+    "@types/pg": "^8.23.1",
+    "typescript": "^5.9.3"
+  }
+}
