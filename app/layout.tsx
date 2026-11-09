@@ -3,6 +3,7 @@ import { Cormorant_Garamond, Inter } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ScrollHelper from "@/components/ScrollHelper";
 import RevealController from "@/components/Reveal";
 import { SITE } from "@/lib/site";
 
@@ -48,6 +49,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <main id="main" tabIndex={-1} className="flex-1 outline-none">{children}</main>
         <Footer />
         <RevealController />
+        <ScrollHelper />
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(orgLd) }} />
       </body>
     </html>
