@@ -12,7 +12,7 @@ export default function Moderate() {
       <p className="eyebrow">Knowledge</p>
       <h1 className="mt-4 text-4xl md:text-6xl">Moderate comments</h1>
       <p className="mt-4 max-w-2xl text-mute">
-        Paste the admin token to see every comment, including hidden ones. The token stays in this browser tab only (session storage) and is sent only to the comments service.
+        Enter the admin password to review comments. New comments are checked automatically: clean ones go live, anything with links, contact details, sales pitches or rough language waits here as Pending, and clear spam or abuse is rejected. The password stays in this browser tab only (session storage) and is sent only to the comments service.
       </p>
       <ModerationPanel />
     </section>

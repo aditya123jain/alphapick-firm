@@ -1,6 +1,6 @@
 "use client";
 import { useCallback, useEffect, useId, useRef, useState, type FormEvent } from "react";
-import { ApiError, BODY_MAX, NAME_MAX, api, fullTime, relativeTime, voterToken, type PublicComment } from "@/lib/comments";
+import { ApiError, BODY_MAX, NAME_MAX, api, fullTime, relativeTime, voterToken, type PostResponse, type PublicComment } from "@/lib/comments";
 
 type ListResponse = { count: number; comments: PublicComment[] };
 const NAME_KEY = "ap.commentName";
@@ -36,12 +36,17 @@ function CommentForm({ slug, parentId, replyTo, onPosted, onCancel, autoFocus }:
     setState("sending"); setMessage("");
     const slowTimer = setTimeout(() => setMessage("Still working, the discussion server may be waking up…"), 4000);
     try {
-      const res = await api<{ comment: PublicComment }>(`/v1/studies/${slug}/comments`, {
+      const res = await api<PostResponse>(`/v1/studies/${slug}/comments`, {
         method: "POST", json: { name, body, parentId: parentId ?? null, website },
       });
       try { localStorage.setItem(NAME_KEY, name.trim()); } catch { /* ignore */ }
-      setBody(""); setState("done"); setMessage(parentId ? "Reply posted." : "Thanks, your comment is posted.");
-      onPosted(res.comment);
+      setBody(""); setState("done");
+      if (res.status === "approved") {
+        setMessage(parentId ? "Reply posted." : "Thanks, your comment is posted.");
+        onPosted(res.comment);
+      } else {
+        setMessage(res.message || "Thanks. Your comment will appear after a quick review.");
+      }
     } catch (err) {
       setState("error");
       setMessage(err instanceof ApiError ? err.message : "Something went wrong. Please try again.");
@@ -174,7 +179,7 @@ export default function Comments({ slug }: { slug: string }) {
         </p>
       </div>
       <p className="mt-4 max-w-2xl text-mute">
-        Questions, critiques or your own results are welcome. Comments are public and shown as plain text. Please keep it civil; off-topic or promotional posts may be hidden.
+        Questions, critiques or your own results are welcome. Comments are public and shown as plain text. Some comments are reviewed before they appear. Please keep it civil; off-topic or promotional posts are not published.
       </p>
 
       <div className="mt-8"><CommentForm slug={slug} onPosted={added} /></div>

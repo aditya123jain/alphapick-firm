@@ -15,7 +15,11 @@ export type PublicComment = {
   replies?: PublicComment[];
 };
 
-export type AdminComment = PublicComment & { study: string; hidden: boolean; ipHash: string };
+export type CommentStatus = "approved" | "pending" | "rejected" | "hidden";
+export type AdminComment = PublicComment & { study: string; status: CommentStatus; hidden: boolean; reasons: string[]; ipHash: string };
+export type PostResponse =
+  | { status: "approved"; comment: PublicComment }
+  | { status: "pending"; message: string };
 
 export class ApiError extends Error {
   constructor(public code: string, message: string, public status: number) { super(message); }

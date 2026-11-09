@@ -35,5 +35,12 @@ export async function migrate(pool: pg.Pool) {
       created_at timestamptz NOT NULL DEFAULT now(),
       PRIMARY KEY (comment_id, voter_hash)
     );
+    -- v2: automatic review. status is approved | pending | rejected | hidden (hidden = taken down by a moderator).
+    ALTER TABLE comments ADD COLUMN IF NOT EXISTS status text;
+    ALTER TABLE comments ADD COLUMN IF NOT EXISTS review_reasons text[] NOT NULL DEFAULT '{}';
+    UPDATE comments SET status = CASE WHEN hidden THEN 'hidden' ELSE 'approved' END WHERE status IS NULL;
+    ALTER TABLE comments ALTER COLUMN status SET DEFAULT 'pending';
+    ALTER TABLE comments ALTER COLUMN status SET NOT NULL;
+    CREATE INDEX IF NOT EXISTS comments_status_idx ON comments (study_slug, status, created_at);
   `);
 }

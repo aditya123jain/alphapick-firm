@@ -82,9 +82,19 @@ Each study page ends with a **Discussion** section (`components/Comments.tsx`). 
 
 **How it works**
 
-- Tables (created automatically on start): `comments` (id, study_slug, parent_id, name, body, created_at, hidden, ip_hash) and `likes` (comment_id, voter_hash; primary key on the pair, so likes are idempotent).
+- Tables (created and migrated automatically on start): `comments` (id, study_slug, parent_id, name, body, created_at, status, review_reasons, hidden, ip_hash) and `likes` (comment_id, voter_hash; primary key on the pair, so likes are idempotent). `status` is `approved`, `pending`, `rejected` or `hidden`; only `approved` comments are public.
 - `GET /health` · `GET /v1/studies/:slug/comments` (visible comments, threaded, with like counts; optional `X-Voter` header marks the reader's own likes) · `POST /v1/studies/:slug/comments` `{name, body, parentId?, website}` · `POST /v1/comments/:id/like` `{voter, like?}` (`like` true/false sets, omitted toggles).
-- Admin, with `Authorization: Bearer $ADMIN_TOKEN`: `GET /v1/admin/comments[?slug=]`, `POST /v1/admin/comments/:id/hide`, `POST /v1/admin/comments/:id/unhide`.
+- Admin, with `Authorization: Bearer <admin password>`: `GET /v1/admin/comments[?slug=&status=]` (includes status, auto-review reasons and per-status counts), `POST /v1/admin/comments/:id/approve | hide | reject | pending` (`unhide` is an alias of approve).
+
+**Automatic review** (`comments-api/src/review.ts`, tests in `review.test.ts`). Every new comment is scored before it is stored:
+
+- *Abuse*: strong profanity and slurs in English and common Hinglish (leetspeak and stretched letters like "f*ck1ng" or "chutiyaaa" are normalised first) → **rejected**. Mild profanity ("crap", "wtf", "bakwas") → pending.
+- *Links and contact details*: any link not on alphapick.in, email addresses, phone numbers (10+ digits), Telegram/WhatsApp/@handles, a link or email in the name → pending (several together → rejected).
+- *Sales and scam pitches*: "guaranteed returns", "100% profit", "double your money", "join my group/channel", "DM me", paid/VIP signals or tips, crypto/forex earning pitches, fund-recovery offers, "earn ₹X per day", work-from-home/investment plans → pending or rejected depending on how many appear.
+- *Shape*: mostly capitals, the same character 6+ times, under 3 letters or keyboard-mash, the same text already posted from another address in the last 7 days → pending.
+- *Behaviour*: 3+ posts from one address in 10 minutes, or a first-time poster whose comment has any other signal → one more point. (5+ posts in 10 minutes are refused with 429.)
+- Score 0 → **approved** (shown at once). Score 1–3 → **pending** (waits in the moderation page). Score 4+ → **rejected**. The reasons are stored on the row and shown to the moderator.
+- Pending and rejected posts get the same reply (`202 {"status":"pending","message":"Thanks. Your comment will appear after a quick review."}`), so posters can't probe the filter. No AI or paid service is used.
 - Spam protection: hidden honeypot field (`website`), max 5 posts per IP per 10 minutes, duplicate-post check, at most 2 links per comment and none in names, HTML tags and control characters stripped, 1–60 character names and 1–2000 character comments, 16 KB body limit, likes limited to 60 per IP per 10 minutes. Raw IPs are never stored, only salted SHA-256 hashes. Comments are rendered as plain text.
 - Only slugs in `ALLOWED_SLUGS` accept comments. **When you add a study to `lib/knowledge.ts`, add its slug to `ALLOWED_SLUGS` on the API service** and render `<Comments slug={study.slug} />` at the end of its page.
 - Errors are JSON: `{"error":{"code":"…","message":"…"}}`.
@@ -94,7 +104,8 @@ Each study page ends with a **Discussion** section (`components/Comments.tsx`). 
 | Where | Variable | Purpose |
 | --- | --- | --- |
 | API | `DATABASE_URL` | Postgres URL (Neon pooled URL with `?sslmode=require`) |
-| API | `ADMIN_TOKEN` | Long random secret for the moderation endpoints |
+| API | `ADMIN_TOKEN_SHA256` | Hex SHA-256 of the admin password (`printf %s 'password' \| sha256sum`). Preferred; when set, `ADMIN_TOKEN` is ignored |
+| API | `ADMIN_TOKEN` | Plain admin password (only used if `ADMIN_TOKEN_SHA256` is empty) |
 | API | `IP_HASH_SALT` | Long random salt for hashing IPs and voter tokens |
 | API | `ALLOWED_ORIGINS` | `https://alphapick.in,https://www.alphapick.in` (localhost is always allowed) |
 | API | `ALLOWED_SLUGS` | Comma-separated study slugs (default `three-lower-closes`) |
@@ -113,9 +124,10 @@ npm run dev            # http://localhost:8787
 NEXT_PUBLIC_COMMENTS_API=http://localhost:8787 npm run dev
 ```
 
-**Moderation:** open `/knowledge/moderate/` (not linked anywhere, `noindex`), paste the admin token (kept only in that tab's sessionStorage), and use Hide / Unhide. Hidden comments (and replies under a hidden comment) disappear from the public page immediately. With curl:
+**Moderation:** open `/knowledge/moderate/` (not linked anywhere, `noindex`), enter the admin password (kept only in that tab's sessionStorage, sent exactly as typed). Tabs: Pending / Approved / Hidden-rejected / All, with the auto-review reasons on each comment and Approve / Hide / Reject buttons. Anything not approved (and replies under it) is off the public page immediately. With curl:
 
 ```bash
 curl -H "Authorization: Bearer $ADMIN_TOKEN" https://alphapick-comments.onrender.com/v1/admin/comments
-curl -X POST -H "Authorization: Bearer $ADMIN_TOKEN" https://alphapick-comments.onrender.com/v1/admin/comments/<id>/hide
+curl -H "Authorization: Bearer $ADMIN_TOKEN" "https://alphapick-comments.onrender.com/v1/admin/comments?status=pending"
+curl -X POST -H "Authorization: Bearer $ADMIN_TOKEN" https://alphapick-comments.onrender.com/v1/admin/comments/<id>/approve
 ```
