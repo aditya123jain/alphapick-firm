@@ -19,7 +19,7 @@ export const STUDIES: Study[] = [
     summary:
       "Buying an ETF after three straight lower closes and selling when it closes above the prior day's high won about three trades in four on SPY and QQQ over 28 years.",
     metaDescription:
-      "A desk research note on buying US equity ETFs after three lower closes. Backtest results for SPY, QQQ and 138 ETFs — not a track record, not investment advice.",
+      "A study on buying US equity ETFs after three lower closes. Backtest results for SPY, QQQ and 138 ETFs — not a track record, not investment advice.",
     tags: ["US equities", "ETFs", "Backtest"],
   },
 ];

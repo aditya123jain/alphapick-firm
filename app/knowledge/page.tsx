@@ -5,11 +5,11 @@ import { STUDIES } from "@/lib/knowledge";
 
 export const metadata: Metadata = {
   title: "Knowledge",
-  description: "Research notes from the Alphapick desk: strategy studies, backtests and working papers from our own capital.",
+  description: "Studies and notes from Alphapick, shared to pass on what we learn about markets.",
   alternates: { canonical: "/knowledge/" },
   openGraph: {
     title: "Knowledge | Alphapick",
-    description: "Research notes from the Alphapick desk: strategy studies, backtests and working papers from our own capital.",
+    description: "Studies and notes from Alphapick, shared to pass on what we learn about markets.",
     url: "/knowledge/",
     images: [{ url: "/og.png", width: 1200, height: 630, alt: "Alphapick, proprietary trading & investing firm" }],
   },
@@ -21,7 +21,7 @@ export default function Knowledge() {
       <PageHero
         eyebrow="Knowledge"
         title={<>Notes from the <em className="text-gold">desk.</em></>}
-        lead="Strategy studies and working papers from Alphapick. Every note is a historical test of a rule — not a track record, and not investment advice."
+        lead="Studies and notes we share simply to pass on what we learn. Each one is a historical test of a rule, not a track record and not investment advice."
       />
 
       <section className="wrap py-20 md:py-28" aria-labelledby="studies-h">
@@ -29,7 +29,7 @@ export default function Knowledge() {
           <div>
             <p className="eyebrow">Studies</p>
             <h2 id="studies-h" className="mt-6 text-5xl md:text-6xl">
-              Published <em className="text-gold">research.</em>
+              Shared <em className="text-gold">knowledge.</em>
             </h2>
           </div>
           <p className="text-sm text-faint">
